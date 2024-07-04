@@ -1,0 +1,18 @@
+{
+  "header": {
+    "english": "English",
+    "chinese": "Chinese",
+    "bountyTemple": "Bounty Temple",
+    "marketplace": "Marketplace",
+    "openBox": "Open Box",
+    "crafting": "Crafting",
+    "connected": "Connected",
+    "myProfile": "My Profile",
+    "claimRewards": "Claim Rewards",
+    "signOut": "Sign Out",
+    "viewProfile": "View Profile",
+    "connectWallet": "Connect Wallet",
+    "error": "Error",
+    "buyAssets": "Buy Assets"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "header": {
+    "english": "English",
+    "chinese": "中文",
+    "bountyTemple": "Bounty Temple",
+    "marketplace": "市场平台",
+    "openBox": "开箱",
+    "crafting": "打造",
+    "connected": "连接",
+    "myProfile": "个人主页",
+    "claimRewards": "领取奖励",
+    "signOut": "退出",
+    "viewProfile": "查看主页",
+    "connectWallet": "连接钱包",
+    "error": "错误",
+    "buyAssets": "购买资产"
+  }
+}

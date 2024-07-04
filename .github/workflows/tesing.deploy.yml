@@ -1,0 +1,40 @@
+name: Deploy testing
+run-name: ${{ github.actor }} is deploying testing branch🚀
+on:
+  push:
+    branches:
+      - "testing"
+jobs:
+  Deploy:
+    runs-on: [self-hosted, orasis-dev-216-deploy-fe]
+    steps:
+      - name: Notify Google Chat
+        uses: SimonScholz/google-chat-action@main
+        with:
+          webhookUrl: "https://chat.googleapis.com/v1/spaces/AAAAlTsQUfM/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=TSJ0qKaMlud1yGMXRgu3L58E919xrTN0MQBOZKqwQpQ"
+          title: "[USER][V1]:: Start deploying!"
+          imageUrl: https://cdn-icons-png.flaticon.com/512/610/610295.png
+          threadKey: "AAAAlTsQUfM-DEPLOY"
+
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Use Node.js 18.19
+        uses: actions/setup-node@v2
+        with:
+          node-version: 18.19
+
+      - run: |
+          rm -rf build
+          yarn
+          yarn build
+          pm2 restart testing.pm2.json
+
+      - name: Notify Google Chat
+        uses: SimonScholz/google-chat-action@main
+        with:
+          webhookUrl: "https://chat.googleapis.com/v1/spaces/AAAAlTsQUfM/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=TSJ0qKaMlud1yGMXRgu3L58E919xrTN0MQBOZKqwQpQ"
+          title: "[USER][V1]:: Deployment successful!"
+          jobStatus: "${{ job.status }}"
+          imageUrl: https://cdn-icons-png.flaticon.com/512/610/610295.png
+          threadKey: "AAAAlTsQUfM-DEPLOY"
